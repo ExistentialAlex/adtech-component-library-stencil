@@ -1,0 +1,14 @@
+button {
+  border-color: transparent;
+  padding: var(--size-xs) var(--size-ms);
+  border-radius: var(--border-radius-s);
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}

@@ -1,0 +1,26 @@
+:host {
+  position: relative;
+  gap: var(--size-m);
+  height: fit-content;
+  padding: var(--size-m);
+  border: var(--size-xxs) solid var(--secondary);
+  background: var(--base-01);
+  transition: border-color var(--time-default) ease;
+
+  &:hover {
+    border-color: var(--secondary-hover);
+  }
+
+  &:focus-within {
+    background: var(--base-01);
+    border-color: var(--primary);
+  }
+
+  & > .input {
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+}

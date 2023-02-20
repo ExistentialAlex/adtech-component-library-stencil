@@ -1,0 +1,225 @@
+@import './colors.scss';
+@import './mixins.scss';
+
+@each $color in $component-colors {
+  .#{map-get($color, 'name')} {
+    &-text {
+      color: map-get($color, 'base');
+    }
+
+    &-bg {
+      background-color: map-get($color, 'base');
+      color: map-get($color, 'text');
+
+      &:active {
+        background-color: map-get($color, 'active');
+      }
+
+      &:focus-visible {
+        border-color: map-get($color, 'focus');
+      }
+
+      &-hover {
+        &:hover {
+          background-color: map-get($color, 'hover');
+        }
+      }
+    }
+
+    &-border {
+      border-color: map-get($color, 'base') !important;
+
+      &-hover {
+        &:hover {
+          border-color: map-get($color, 'hover') !important;
+        }
+      }
+
+      &-form {
+        &:focus-within {
+          background-color: var(--base-01);
+          border-color: map-get($color, 'base') !important;
+        }
+      }
+    }
+  }
+}
+
+@each $color in $status-colors {
+  .#{map-get($color, 'name')} {
+    &-text {
+      color: map-get($color, 'text');
+    }
+
+    &-fill {
+      color: map-get($color, 'fill-text');
+      background-color: map-get($color, 'fill');
+
+      &-hover {
+        &:hover {
+          background-color: map-get($color, 'fill-hover');
+        }
+      }
+    }
+
+    &-bg {
+      background-color: map-get($color, 'bg');
+      color: map-get($color, 'text');
+
+      &:focus-visible {
+        border-color: map-get($color, 'fill');
+      }
+
+      &-hover {
+        &:hover {
+          background-color: map-get($color, 'hover');
+        }
+      }
+    }
+
+    &-border {
+      border-color: map-get($color, 'fill') !important;
+
+      &-hover {
+        &:hover {
+          border-color: map-get($color, 'fill-hover') !important;
+        }
+      }
+
+      &-form {
+        border-color: var(--secondary) !important;
+
+        &:hover {
+          border-color: var(--secondary-hover) !important;
+        }
+
+        &:focus-within {
+          background-color: var(--base-01);
+          border-color: map-get($color, 'fill') !important;
+        }
+      }
+    }
+  }
+}
+
+@each $color in $numeric-colors {
+  .#{map-get($color, 'name')} {
+    &-text {
+      color: map-get($color, 'base');
+    }
+
+    &-bg {
+      background-color: map-get($color, 'base');
+      color: map-get($color, 'text');
+
+      &-hover {
+        &:hover {
+          background-color: map-get($color, 'hover');
+        }
+      }
+    }
+
+    &-border {
+      border-color: map-get($color, 'base');
+
+      &-hover {
+        &:hover {
+          border-color: map-get($color, 'hover');
+        }
+      }
+
+      &-form {
+        border-color: var(--secondary) !important;
+
+        &:hover {
+          border-color: var(--secondary-hover) !important;
+        }
+
+        &:focus-within {
+          background-color: var(--base-01);
+          border-color: map-get($color, 'base') !important;
+        }
+      }
+    }
+  }
+}
+
+.flex {
+  display: flex;
+
+  &-column {
+    @extend .flex;
+    flex-direction: column;
+  }
+
+  &-justify {
+    &-center {
+      @extend .flex;
+      justify-content: center;
+    }
+
+    &-start {
+      @extend .flex;
+      justify-content: flex-start;
+    }
+
+    &-end {
+      @extend .flex;
+      justify-content: flex-end;
+    }
+
+    &-evenly {
+      @extend .flex;
+      justify-content: space-evenly;
+    }
+
+    &-around {
+      @extend .flex;
+      justify-content: space-around;
+    }
+
+    &-between {
+      @extend .flex;
+      justify-content: space-between;
+    }
+  }
+
+  &-align {
+    &-center {
+      @extend .flex;
+      align-items: center;
+    }
+    &-start {
+      @extend .flex;
+      align-items: flex-start;
+    }
+    &-end {
+      @extend .flex;
+      align-items: flex-end;
+    }
+  }
+
+  @each $size in (1, 2, 3, 4, 5, 6, 7, 8, 9) {
+    &-#{$size} {
+      flex: $size;
+    }
+  }
+}
+
+.br {
+  &-default {
+    @include border-radius-default;
+  }
+
+  &-rounded {
+    @include border-radius-rounded;
+  }
+
+  &-sharp {
+    @include border-radius-sharp;
+  }
+
+  &-circle {
+    @include border-radius-circle;
+  }
+}

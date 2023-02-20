@@ -7,8 +7,18 @@
 
     <script type="module" src="/build/adtech-component-library-stencil.esm.js"></script>
     <script nomodule src="/build/adtech-component-library-stencil.js"></script>
+    <link rel="stylesheet" href="/build/adtech-component-library-stencil.css"/>
   </head>
-  <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+  <body style="padding: var(--size-m); gap: var(--size-m)" class="flex-column">
+    <adt-text-field placeholder="Test" color="success"
+      ><p slot="left">Hello there!</p>
+      <p slot="right">Right content</p></adt-text-field
+    >
+    <adt-button color="accent"
+      ><div slot="left">Left!</div>
+      Click me!
+      <div slot="right">Right!</div></adt-button
+    >
+    <adt-menu color="warning" items="['item1']"></adt-menu>
   </body>
 </html>

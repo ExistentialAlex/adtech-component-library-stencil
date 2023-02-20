@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  background-color: var(--base-01);
+  overflow: hidden;
+  border: var(--size-xxs) solid var(--secondary);
+  transition: border-color var(--time-fast) ease;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    border-color: var(--secondary-hover);
+  }
+
+  & .adt-menu {
+    &-item {
+      cursor: pointer;
+      list-style: none;
+      padding: 0 var(--size-m);
+      height: var(--size-xl);
+      line-height: var(--size-xl);
+      transition: background-color var(--time-fast) ease;
+
+      &__active {
+        background: var(--base-02);
+      }
+
+      &:hover {
+        background-color: var(--base-02);
+      }
+    }
+
+    &-empty {
+      min-height: var(--size-xl);
+      text-align: center;
+      padding: 0 var(--size-m);
+      color: var(--text-02);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

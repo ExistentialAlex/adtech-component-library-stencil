@@ -1,0 +1,17 @@
+:host {
+  transition: background-color var(--time-fast) ease;
+  display: inline-block;
+}
+
+.adt-btn {
+  display: flex;
+  gap: var(--size-xs);
+  justify-content: center;
+  align-items: center;
+  border-color: transparent;
+  padding: var(--size-xs) var(--size-ms);
+  border-radius: var(--border-radius-s);
+  color: inherit;
+  background-color: transparent;
+  width: 100%;
+}
