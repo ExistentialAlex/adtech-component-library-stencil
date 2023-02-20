@@ -12,11 +12,13 @@ export class AdtMenu implements AppearanceProps {
   @Prop() color?: AdTechComponentColors | AdTechStatusColors | AdTechNumericColors;
   @Prop() rounded?: boolean;
   @Prop() sharp?: boolean;
-  @Prop() items!: unknown[];
-  @Prop() stringify: (item: unknown) => string;
+  @Prop() items: unknown[] = [];
+  @Prop() stringify: (item: any) => string = item => item;
+  @Prop() template: (item: any) => any;
   @Prop() value: unknown;
 
-  @Event() valueChanged: EventEmitter<unknown>;
+  @Event() valueChanged: EventEmitter;
+  @Event() itemClick: EventEmitter;
 
   @State() active?: unknown;
   @State() classes: string[] = [];
@@ -28,7 +30,12 @@ export class AdtMenu implements AppearanceProps {
     this.classes = ['br-default', ...getBrClasses({ rounded: this.rounded, sharp: this.sharp }), ...getColorOutlineClasses(this.color as AppearanceProps['color'], true)];
   }
 
-  itemClick(item: unknown) {
+  @Watch('value')
+  setActive() {
+    this.active = this.value || null;
+  }
+
+  onClick(item: unknown) {
     if (this.stringify(this.active || '') === this.stringify(item)) {
       this.active = null;
       this.valueChanged.emit(null);
@@ -37,10 +44,11 @@ export class AdtMenu implements AppearanceProps {
 
     this.active = item;
     this.valueChanged.emit(item);
+    this.itemClick.emit();
   }
 
-  componentWillRender() {
-    this.active = this.value;
+  connectedCallback() {
+    this.setActive();
     this.computeClasses();
   }
 
@@ -58,8 +66,10 @@ export class AdtMenu implements AppearanceProps {
                 <li
                   key={this.stringify(item)}
                   class={{ 'adt-menu-item': true, 'adt-menu-item__active': this.stringify(this.active || '') === this.stringify(item) }}
-                  onClick={() => this.itemClick(item)}
-                ></li>
+                  onClick={() => this.onClick(item)}
+                >
+                  {this.template ? this.template(item) : this.stringify(item)}
+                </li>
               );
             })
           )}
