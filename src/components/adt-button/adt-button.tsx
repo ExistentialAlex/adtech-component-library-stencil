@@ -26,7 +26,7 @@ export class AdtButton implements AppearanceProps {
     ];
   }
 
-  componentWillRender() {
+  connectedCallback() {
     this.computeClasses();
   }
 

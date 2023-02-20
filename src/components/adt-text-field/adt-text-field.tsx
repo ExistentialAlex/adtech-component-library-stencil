@@ -44,7 +44,7 @@ export class AdtTextField implements AppearanceProps {
     this.input.focus();
   }
 
-  componentWillRender() {
+  connectedCallback() {
     this.computeClasses();
   }
 
