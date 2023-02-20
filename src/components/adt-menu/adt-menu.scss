@@ -4,13 +4,13 @@
   overflow: hidden;
   border: var(--size-xxs) solid var(--secondary);
   transition: border-color var(--time-fast) ease;
-  padding: 0;
-  margin: 0;
   &:hover {
     border-color: var(--secondary-hover);
   }
 
   & .adt-menu {
+    padding: 0;
+    margin: 0;
     &-item {
       cursor: pointer;
       list-style: none;
