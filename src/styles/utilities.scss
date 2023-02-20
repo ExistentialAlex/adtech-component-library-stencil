@@ -161,6 +161,10 @@
         }
       }
 
+      &-0 {
+        margin-#{$selector}: 0;
+      }
+
       &-auto {
         margin-#{$selector}: auto;
       }
@@ -171,6 +175,14 @@
     &-#{$size} {
       margin: var(--size-#{$size});
     }
+  }
+
+  &-0 {
+    margin: 0;
+  }
+
+  &-auto {
+    margin: auto;
   }
 }
 
@@ -187,20 +199,32 @@
     &#{$dir} {
       @each $size in $sizes {
         &-#{$size} {
-          margin-#{$selector}: var(--size-#{$size});
+          padding-#{$selector}: var(--size-#{$size});
         }
       }
 
+      &-0 {
+        padding-#{$selector}: 0;
+      }
+
       &-auto {
-        margin-#{$selector}: auto;
+        padding-#{$selector}: auto;
       }
     }
   }
 
   @each $size in $sizes {
     &-#{$size} {
-      margin: var(--size-#{$size});
+      padding: var(--size-#{$size});
     }
+  }
+
+  &-0 {
+    padding: 0;
+  }
+
+  &-auto {
+    padding: auto;
   }
 }
 
