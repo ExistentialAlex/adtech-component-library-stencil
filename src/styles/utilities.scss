@@ -144,6 +144,97 @@
   }
 }
 
+.m {
+  $directions: (
+    'l': 'left',
+    'r': 'right',
+    't': 'top',
+    'b': 'bottom',
+  );
+  $sizes: ('xxxs', 'xxs', 'xs', 's', 'sm', 'm', 'ml', 'l', 'xl', 'xxl', 'xxxl');
+
+  @each $dir, $selector in $directions {
+    &#{$dir} {
+      @each $size in $sizes {
+        &-#{$size} {
+          margin-#{$selector}: var(--size-#{$size});
+        }
+      }
+
+      &-auto {
+        margin-#{$selector}: auto;
+      }
+    }
+  }
+
+  @each $size in $sizes {
+    &-#{$size} {
+      margin: var(--size-#{$size});
+    }
+  }
+}
+
+.p {
+  $directions: (
+    'l': 'left',
+    'r': 'right',
+    't': 'top',
+    'b': 'bottom',
+  );
+  $sizes: ('xxxs', 'xxs', 'xs', 's', 'sm', 'm', 'ml', 'l', 'xl', 'xxl', 'xxxl');
+
+  @each $dir, $selector in $directions {
+    &#{$dir} {
+      @each $size in $sizes {
+        &-#{$size} {
+          margin-#{$selector}: var(--size-#{$size});
+        }
+      }
+
+      &-auto {
+        margin-#{$selector}: auto;
+      }
+    }
+  }
+
+  @each $size in $sizes {
+    &-#{$size} {
+      margin: var(--size-#{$size});
+    }
+  }
+}
+
+.gap {
+  @each $size in ('xxxs', 'xxs', 'xs', 's', 'sm', 'm', 'ml', 'l', 'xl', 'xxl', 'xxxl') {
+    &-#{$size} {
+      gap: var(--size-#{$size});
+    }
+  }
+}
+
+.border {
+  border-style: solid;
+
+  &-thick {
+    @extend .border;
+    border-width: var(--size-xs);
+  }
+
+  &-default {
+    @extend .border;
+    border-width: var(--size-xxs);
+  }
+
+  &-thin {
+    @extend .border;
+    border-width: var(--size-xxs);
+  }
+
+  &-dashed {
+    border-style: dashed;
+  }
+}
+
 .flex {
   display: flex;
 
