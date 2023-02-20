@@ -29,7 +29,12 @@ export class AdtTextField implements AppearanceProps {
   @Watch('sharp')
   @Watch('color')
   computeClasses() {
-    this.classes = ['flex', 'br-default', ...getBrClasses({ rounded: this.rounded, sharp: this.sharp }), ...getColorFormOutlineClasses(this.color as AppearanceProps['color'])];
+    this.classes = [
+      'flex',
+      'br-default',
+      ...getBrClasses({ rounded: this.rounded, sharp: this.sharp }),
+      ...getColorFormOutlineClasses(this.color as AppearanceProps['color']),
+    ];
   }
 
   input!: HTMLInputElement;

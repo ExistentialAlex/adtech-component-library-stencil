@@ -27,7 +27,11 @@ export class AdtMenu implements AppearanceProps {
   @Watch('sharp')
   @Watch('color')
   computeClasses() {
-    this.classes = ['br-default', ...getBrClasses({ rounded: this.rounded, sharp: this.sharp }), ...getColorOutlineClasses(this.color as AppearanceProps['color'], true)];
+    this.classes = [
+      'br-default',
+      ...getBrClasses({ rounded: this.rounded, sharp: this.sharp }),
+      ...getColorOutlineClasses(this.color as AppearanceProps['color'], true),
+    ];
   }
 
   @Watch('value')
@@ -65,7 +69,11 @@ export class AdtMenu implements AppearanceProps {
               return (
                 <li
                   key={this.stringify(item)}
-                  class={{ 'adt-menu-item': true, 'adt-menu-item__active': this.stringify(this.active || '') === this.stringify(item) }}
+                  class={{
+                    'adt-menu-item': true,
+                    'adt-menu-item__active':
+                      this.stringify(this.active || '') === this.stringify(item),
+                  }}
                   onClick={() => this.onClick(item)}
                 >
                   {this.template ? this.template(item) : this.stringify(item)}

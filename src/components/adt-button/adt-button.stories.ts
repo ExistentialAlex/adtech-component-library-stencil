@@ -17,7 +17,9 @@ export default {
 };
 
 const Template = args =>
-  `<adt-button color="${args.color}" rounded="${args.rounded}" sharp="${args.sharp}">${args.leftContent ? `<div slot="left">${args.leftContent}</div>` : ''}Click me!${
+  `<adt-button color="${args.color}" rounded="${args.rounded}" sharp="${args.sharp}">${
+    args.leftContent ? `<div slot="left">${args.leftContent}</div>` : ''
+  }Click me!${
     args.rightContent ? `<div slot="right">${args.rightContent}</div>` : ''
   }</adt-button>`;
 
