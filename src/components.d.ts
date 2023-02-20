@@ -13,12 +13,15 @@ export namespace Components {
         "rounded"?: boolean;
         "sharp"?: boolean;
     }
+    interface AdtDemo {
+    }
     interface AdtMenu {
         "color"?: AdTechComponentColors | AdTechStatusColors | AdTechNumericColors;
         "items": unknown[];
         "rounded"?: boolean;
         "sharp"?: boolean;
-        "stringify": (item: unknown) => string;
+        "stringify": (item: any) => string;
+        "template": (item: any) => any;
         "value": unknown;
     }
     interface AdtTextField {
@@ -44,6 +47,12 @@ declare global {
         prototype: HTMLAdtButtonElement;
         new (): HTMLAdtButtonElement;
     };
+    interface HTMLAdtDemoElement extends Components.AdtDemo, HTMLStencilElement {
+    }
+    var HTMLAdtDemoElement: {
+        prototype: HTMLAdtDemoElement;
+        new (): HTMLAdtDemoElement;
+    };
     interface HTMLAdtMenuElement extends Components.AdtMenu, HTMLStencilElement {
     }
     var HTMLAdtMenuElement: {
@@ -58,6 +67,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "adt-button": HTMLAdtButtonElement;
+        "adt-demo": HTMLAdtDemoElement;
         "adt-menu": HTMLAdtMenuElement;
         "adt-text-field": HTMLAdtTextFieldElement;
     }
@@ -68,13 +78,17 @@ declare namespace LocalJSX {
         "rounded"?: boolean;
         "sharp"?: boolean;
     }
+    interface AdtDemo {
+    }
     interface AdtMenu {
         "color"?: AdTechComponentColors | AdTechStatusColors | AdTechNumericColors;
-        "items": unknown[];
-        "onValueChanged"?: (event: AdtMenuCustomEvent<unknown>) => void;
+        "items"?: unknown[];
+        "onItemClick"?: (event: AdtMenuCustomEvent<any>) => void;
+        "onValueChanged"?: (event: AdtMenuCustomEvent<any>) => void;
         "rounded"?: boolean;
         "sharp"?: boolean;
-        "stringify"?: (item: unknown) => string;
+        "stringify"?: (item: any) => string;
+        "template"?: (item: any) => any;
         "value"?: unknown;
     }
     interface AdtTextField {
@@ -87,6 +101,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "adt-button": AdtButton;
+        "adt-demo": AdtDemo;
         "adt-menu": AdtMenu;
         "adt-text-field": AdtTextField;
     }
@@ -96,6 +111,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "adt-button": LocalJSX.AdtButton & JSXBase.HTMLAttributes<HTMLAdtButtonElement>;
+            "adt-demo": LocalJSX.AdtDemo & JSXBase.HTMLAttributes<HTMLAdtDemoElement>;
             "adt-menu": LocalJSX.AdtMenu & JSXBase.HTMLAttributes<HTMLAdtMenuElement>;
             "adt-text-field": LocalJSX.AdtTextField & JSXBase.HTMLAttributes<HTMLAdtTextFieldElement>;
         }
